@@ -1,0 +1,91 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new flight
+    </h2>
+
+    <form action="/insert_flight" method="post">
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="description_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="departs_at_box">
+          Departs at
+        </label>
+
+        <input type="datetime-local" id="departs_at_box" name="departs_at_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create flight
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="row mb-3">
+	<div class="col-lg-8 offset-lg-2">
+    <div class="card">
+      <div class="card-header h6 py-3 text-uppercase">
+        Upcoming flights
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <% @upcoming_flights.each do |flight| %>
+          <li class="list-group-item d-flex align-items-center justify-content-between">
+            <div>
+              <% if flight.message_sent %>
+                <span class="text-success">
+                  <i class="fas fa-fw fa-check-circle"></i>
+                </span>
+              <% else %>
+                <span class="text-danger">
+                  <i class="fas fa-fw fa-stopwatch"></i>
+                </span>
+              <% end %>
+
+              Departs for <%= flight.description %> at <%= flight.departs_at.strftime("%l:%M%P on %b %e, %Y") %>
+            </div>
+
+            <div>
+              <a href="/delete_flight/<%= flight.id %>">
+                <i class="far fa-fw fa-trash-alt"></i>
+              </a>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+	<div class="col-lg-8 offset-lg-2">
+    <div class="card">
+      <div class="card-header h6 py-3 text-uppercase">
+        Past flights
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <% @past_flights.each do |flight| %>
+          <li class="list-group-item d-flex align-items-center justify-content-between">
+            <span>
+              Departs for <%= flight.description %> at <%= flight.departs_at.strftime("%l:%M%P on %b %e, %Y") %>
+            </span>
+
+            <span>
+              <a href="/delete_flight/<%= flight.id %>">
+                <i class="far fa-trash-alt"></i>
+              </a>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

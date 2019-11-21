@@ -1,0 +1,102 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Flight #<%= @flight.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/flights" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_flight/<%= @flight.id %>" class="btn btn-block btn-outline-secondary">
+          Delete flight
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Departs at
+      </dt>
+      <dd>
+        <%= @flight.departs_at %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @flight.user_id %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @flight.description %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@flight.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@flight.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit flight
+    </h2>
+
+    <form action="/modify_flight/<%= @flight.id %>"  method="post" >
+      <div class="form-group">
+        <label for="departs_at_box">
+          Departs at
+        </label>
+
+        <input type="datetime-local" id="departs_at_box" name="departs_at_from_query"
+          class="form-control" value="<%= @flight.departs_at %>">
+      </div>
+
+      <div class="form-group">
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="user_id_from_query" class="form-control" value="<%= @flight.user_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="description_from_query" class="form-control" value="<%= @flight.description %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create flight
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

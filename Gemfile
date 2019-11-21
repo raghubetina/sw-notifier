@@ -56,7 +56,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'draft_generators', github: 'firstdraft/draft_generators'
+  gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'jw-update-draft-layout'
   gem 'letter_opener'
   gem 'meta_request'
 end
@@ -76,3 +76,4 @@ end
 
 gem 'devise'
 gem 'activeadmin', '2.2.0'
+

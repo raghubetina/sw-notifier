@@ -1,0 +1,45 @@
+<div >
+  <h5>
+    Edit User Account
+  </h5>
+
+  <% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+  <% end %>
+  <div>
+    <form action="/patch_user" method="post">
+              
+      <div>
+        <label for="email">Email</label>
+          
+        <input id="email" name="email" value="<%= @current_user.email %>">
+          
+      </div>
+                                    
+      <div>
+        <label for="phone_number">Phone number</label>
+          
+        <input id="phone_number" name="phone_number" value="<%= @current_user.phone_number %>">
+          
+      </div>
+              
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" placeholder="Choose a new password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation">Password Confirmation</label>
+        <input id="password_confirmation" name="password_confirmation" placeholder="Confirm your new password..." type="password">
+      </div>
+
+      <button>
+        Update account
+      </button>
+    </form>
+  </div>
+</div>
